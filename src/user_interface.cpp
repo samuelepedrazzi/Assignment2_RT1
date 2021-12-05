@@ -81,5 +81,6 @@ int main(int argc, char **argv)
     ros::Subscriber sub = nh.subscribe("/base_scan", 1, UICallbackFunction);
     pub = nh.advertise<Assignment2_RT1::Velocity_message>("/Velocity_message",1);
 
+    ros::spin();
     return 0;
 }
