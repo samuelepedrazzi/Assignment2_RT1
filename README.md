@@ -8,6 +8,14 @@ Introduction
 
 The goal of the project is to create a robot that can 'drive autonomously' inside the [Autodromo Nazionale di Monza](https://www.monzanet.it/) while 'paying attention not to crash with the circuit limitations.' 
 
+In the folder can be found 
+* 'world': folder containing information about the characteristics of the simulator's world * 'CMakeLists.txt': text file describing how to build the code and where to install it to * 'package.xml': XML file defining properties about the package such as the package name, version numbers, authors, maintainers, and dependencies on other catkin packages
+
+*'src': folder containing two C++ scripts ('robot controller.cpp' and 'robot GUI.cpp') that implement two nodes: one that controls the robot and does some operations on demand, and the other that interacts with the user and sends requests to the first.
+
+*
+'srv': folder containing a custom ROS service ('ChangeVel.srv') with the goal of bringing the two previously stated nodes together. 
+
 Installing and running
 ----------------------
 
