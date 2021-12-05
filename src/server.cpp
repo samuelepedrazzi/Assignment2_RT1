@@ -39,7 +39,7 @@ bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignm
         break;
     }
     response.value = service_speed;
-    ROS_INFO("Updated speed: @[%f]", response.value);   
+    ROS_INFO("Updated speed: @[%f]", response.value);
 
     return true;
 }
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "server");
     ros::NodeHandle nh;
     // Define the subscriber
-    ros::ServiceServer service = nh.advertiseService("/service",UpdateVelocity);
+    ros::ServiceServer service = nh.advertiseService("/service", UpdateVelocity);
     ros::spin();
     return 0;
 }
