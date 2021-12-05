@@ -16,9 +16,11 @@ In 'Assignment2_RT1' can be found several folders:
 * 'src': folder containing two C++ scripts ('robot controller.cpp' and 'robot GUI.cpp') that implement two nodes: one that controls the robot and does some operations on demand, and the other that interacts with the user and sends requests to the first.
 
 * 'srv': folder containing a custom ROS service ('ChangeVel.srv') with the goal of bringing the two previously stated nodes together.
-* 'gitignore': a file which duty is to avoid showing some files which are not necessary to the main target of the project 
-Installing and running
-----------------------
+* 'gitignore': a file which duty is to avoid showing some files which are not necessary to the main target of the project.
+
+
+Installing and running 
+-----------------------
 
 The simulator requires [__ROS__](http://wiki.ros.org) (__Robot-Operating-Systems__) to be installed on the machine. In particular, the [Noetic Release of ROS](http://wiki.ros.org/noetic/Installation) was used.
 
