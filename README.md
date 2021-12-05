@@ -58,7 +58,7 @@ This topic is made up of 720 _ranges_, each of which contains all of the detecte
 Each sensor has a 1/4-degree field of vision and can observe from -90 to 90 degrees.
 
 
-The controller node enters the 'checkTrackLimits' function after receiving a message from '/base scan,' which filters all ranges except those from: * -90° to -70°, * -10° to 10°, * 70° to 90°. 
+The controller node enters the 'ControlRobotTrack' function after receiving a message from '/base scan,' which filters all ranges except those from: -100° to -60°,  -20° to 20°,  60° to 100°. 
 
 The function then looks for the minimum value in each of the three sets and decides what action to take:
 
@@ -69,7 +69,7 @@ The function then looks for the minimum value in each of the three sets and deci
 
 
 Otherwise the robot travels straight, if the wall is further than the threshold, and the '/Velocity message' value is used as the speed value.
-The UI node manages '/Speed val' based on the information he receives from the '/accelerator' node.
+The UI node manages '/Velocity_message' based on the information he receives from the '/service' node.
 
 
 The controller node then publishes the data to the '/cmd vel' topic, which is used to control the robot's movement. 
