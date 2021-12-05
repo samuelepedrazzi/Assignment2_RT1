@@ -9,7 +9,7 @@ ros::Publisher pub;
 geometry_msgs::Twist robot_vel;
 
 float front_min = 2;
-float initial_vel = 0.5;
+float vel = 0.5;
 
 float checkDistance(float angle_range[], float min_value, float max_value)
 {
@@ -39,29 +39,29 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
     {
         if (left < right)
         {
-            robot_vel.linear.x = initial_vel;
+            robot_vel.linear.x = 0.5;
             robot_vel.angular.z = 1;
         }
         else if (right < left)
         {
-            robot_vel.linear.x = initial_vel;
+            robot_vel.linear.x = 0.5;
             robot_vel.angular.z = -1;
         }
     }
     else if (front > front_min)
     {
-        robot_vel.linear.x = initial_vel;
+        robot_vel.linear.x = vel;
         robot_vel.angular.z = 0;
     }
 
-    ROS_INFO("Initial velocity: @[%.2f]", initial_vel);
+    ROS_INFO("Initial velocity: @[%.2f]", vel);
     pub.publish(robot_vel);
 }
 
 void ManageSpeed(const Assignment2_RT1::Velocity_message::ConstPtr& speed)
 {
     std::cout << "New value of seppd is: "<<speed->velocity_msg<<"\n";
-    float vel = speed->velocity_msg;
+    vel = speed->velocity_msg;
 }
 
 int main(int argc, char **argv)
