@@ -8,8 +8,8 @@
 ros::Publisher pub;
 geometry_msgs::Twist robot_vel;
 
-float front_min = 2;
-float vel = 0.5;
+float front_min = 1.5;
+float vel = 1;
 
 float checkDistance(float angle_range[], float min_value, float max_value)
 {
@@ -39,13 +39,13 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
     {
         if (left < right)
         {
-            robot_vel.linear.x = vel;
-            robot_vel.angular.z = 2*vel;;
+            robot_vel.linear.x = 0.2;
+            robot_vel.angular.z = 1;
         }
         else if (right < left)
         {
-            robot_vel.linear.x = vel;
-            robot_vel.angular.z = -2*vel;
+            robot_vel.linear.x = 0.2;
+            robot_vel.angular.z = -1;
         }
     }
     else if (front > front_min)
@@ -54,7 +54,7 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
         robot_vel.angular.z = 0;
     }
 
-    ROS_INFO("Initial velocity: @[%.2f]", vel);
+    ROS_INFO("Actual speed: @[%.2f]", vel);
     pub.publish(robot_vel);
 }
 

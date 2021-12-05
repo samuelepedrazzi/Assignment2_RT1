@@ -38,7 +38,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
     {
         if (valid_inputs[i] == user_input)
         {
-            std::cout << "Valid input!\n"
+            std::cout << "\nValid input!\n"
                       << std::endl;
             valid_input = true;
         }

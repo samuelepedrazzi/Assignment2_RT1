@@ -5,7 +5,7 @@
 
 std_srvs::Empty reset;
 
-float service_speed = 0;
+float service_speed = 1;
 
 bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignment2_RT1::Velocity_service::Response &response)
 {
