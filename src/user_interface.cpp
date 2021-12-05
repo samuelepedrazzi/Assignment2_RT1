@@ -17,18 +17,38 @@ char GetInput()
 }
 void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
 {
+    std::cout << "************************************************************" << std::endl;
+    std::cout << "Welcome to the user interface, you can choose from a range of inputs to control the robot\n"
+              << std::endl;
+    std::cout << "'+': increment the linear velocity\n"
+              << std::endl;
+    std::cout << "'-': decrement the linear velocity\n"
+              << std::endl;
+    std::cout << "'R/r': reset the robot in the inital position in the circuit\n"
+              << std::endl;
+    std::cout << "'q': quit the user interface node\n"
+              << std::endl;
+    std::cout << "************************************************************" << std::endl;
+
     Assignment2_RT1::Velocity_service service;
-    char i;
-    char valid_inputs[i] = {'+', '-', 'R', 'r', 'q'};
+    bool valid_input = false;
+    char valid_inputs[] = {'+', '-', 'R', 'r', 'q'};
     char user_input = GetInput();
-    if (user_input == valid_inputs[i])
+    for (int i = 0; i < 5; i++)
     {
-        std::cout << "Valid input!\n"
-                  << std::endl;
+        if (valid_inputs[i] == user_input)
+        {
+            std::cout << "Valid input!\n"
+                      << std::endl;
+            valid_input = true;
+        }
+    }
+    if (valid_input = true)
+    {
         if (user_input == '+')
         {
             std::cout << "You have pressed \"+\"! The robot is accelerating.\n"
-                  << std::endl;
+                      << std::endl;
             client.waitForExistence();
             service.request.input = '+';
             client.call(service);
@@ -36,7 +56,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
         else if (user_input == '-')
         {
             std::cout << "You have pressed \"-\"! The robot is decelerating.\n"
-                  << std::endl;
+                      << std::endl;
             client.waitForExistence();
             service.request.input = '-';
             client.call(service);
@@ -44,7 +64,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
         else if (user_input == 'R' || user_input == 'r')
         {
             std::cout << "You have pressed \"R/r\"! The robot is reset to the initial position.\n"
-                  << std::endl;
+                      << std::endl;
             client.waitForExistence();
             service.request.input = user_input;
             client.call(service);
@@ -52,7 +72,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
         else if (user_input == 'q')
         {
             std::cout << "You have pressed \"q\"! Quit the user interface.\n"
-                  << std::endl;
+                      << std::endl;
             client.waitForExistence();
             service.request.input = 'q';
             client.call(service);
@@ -60,8 +80,8 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
         Assignment2_RT1::Velocity_message message;
         message.velocity_msg = service.response.value;
         pub.publish(message);
-        system("clear");
-        std::cout << "Speed updated, the new value is: %f\n" << service.response.value << "\n\n";
+        std::cout << "Speed updated, the new value is: " << service.response.value << "\n\n";
+        valid_input=false;
     }
     else
         std::cout << "Not valid input! Please try again.\n"
@@ -79,7 +99,7 @@ int main(int argc, char **argv)
     // Define the subscriber
     client = nh.serviceClient<Assignment2_RT1::Velocity_service>("/service");
     ros::Subscriber sub = nh.subscribe("/base_scan", 1, UICallbackFunction);
-    pub = nh.advertise<Assignment2_RT1::Velocity_message>("/Velocity_message",1);
+    pub = nh.advertise<Assignment2_RT1::Velocity_message>("/Velocity_message", 1);
 
     ros::spin();
     return 0;

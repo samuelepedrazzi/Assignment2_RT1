@@ -54,7 +54,7 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
         robot_vel.angular.z = 0;
     }
 
-    ROS_INFO("Initial velocity: @[%f]", initial_vel);
+    ROS_INFO("Initial velocity: @[%.2f]", initial_vel);
     pub.publish(robot_vel);
 }
 

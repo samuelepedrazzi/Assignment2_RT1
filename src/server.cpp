@@ -15,7 +15,7 @@ bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignm
     //increase speed
     case '+':
         service_speed += 1;
-        request.input = 'q';
+        //request.input = 'q';
         break;
 
     //decrease speed
@@ -23,7 +23,7 @@ bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignm
         if (service_speed >= 2)
         {
             service_speed -= 1;
-            request.input = 'q';
+            //request.input = 'q';
         }
         break;
 
@@ -39,7 +39,7 @@ bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignm
         break;
     }
     response.value = service_speed;
-    ROS_INFO("Updated speed: @[%f]", response.value);
+    ROS_INFO("Updated speed: @[%.2f]", response.value);
 
     return true;
 }
