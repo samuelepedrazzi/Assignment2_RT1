@@ -36,7 +36,6 @@ bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignm
     case 'q':
         return false;
     default:
-        std::cout << "Not valid input, please try again.\n";
         break;
     }
     response.value = service_speed;
