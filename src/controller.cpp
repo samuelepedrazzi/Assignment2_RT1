@@ -31,21 +31,21 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
     for (int i = 0; i <= 720; i++)
         range_view[i] = msg->ranges[i];
 
-    left = checkDistance(range_view, 0, 120);
-    right = checkDistance(range_view, 600, 720);
-    front = checkDistance(range_view, 300, 420);
+    left = checkDistance(range_view, 0, 100);
+    right = checkDistance(range_view, 620, 720);
+    front = checkDistance(range_view, 310, 410);
 
     if (front < front_min)
     {
         if (left < right)
         {
-            robot_vel.linear.x = 0.5;
-            robot_vel.angular.z = 1;
+            robot_vel.linear.x = vel;
+            robot_vel.angular.z = 2*vel;;
         }
         else if (right < left)
         {
-            robot_vel.linear.x = 0.5;
-            robot_vel.angular.z = -1;
+            robot_vel.linear.x = vel;
+            robot_vel.angular.z = -2*vel;
         }
     }
     else if (front > front_min)
@@ -60,7 +60,7 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
 
 void ManageSpeed(const Assignment2_RT1::Velocity_message::ConstPtr& speed)
 {
-    std::cout << "New value of seppd is: "<<speed->velocity_msg<<"\n";
+    std::cout << "New value of speed is: "<<speed->velocity_msg<<"\n";
     vel = speed->velocity_msg;
 }
 

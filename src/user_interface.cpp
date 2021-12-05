@@ -28,7 +28,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
               << std::endl;
     std::cout << "'q': quit the user interface node\n"
               << std::endl;
-    std::cout << "************************************************************" << std::endl;
+    std::cout << "************************************************************\n" << std::endl;
 
     Assignment2_RT1::Velocity_service service;
     bool valid_input = false;
