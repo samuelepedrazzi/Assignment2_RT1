@@ -57,7 +57,7 @@ Here's the Monza track used in this game:
 
 ROS generate the track arena based on this image, using the file `.world` contined inside the `world` folder. 
 
-Stageros Node
+Stageros
 ------------
 
 By using libstage, the stageros node covers the Stage 2-D multi-robot simulator.
