@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "server");
     ros::NodeHandle nh;
 
-     // Define the service and call the UpdateVelocity() function
+    // Define the service and call the UpdateVelocity() function
     ros::ServiceServer service = nh.advertiseService("/service", UpdateVelocity);
     ros::spin();
     return 0;

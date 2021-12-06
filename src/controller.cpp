@@ -7,10 +7,9 @@
 ros::Publisher pub;
 geometry_msgs::Twist robot_vel;
 
-// Define global variables for the frontal threshold and the initial velocity 
+// Define global variables for the frontal threshold and the initial velocity
 float front_min = 1.5;
 float vel = 1;
-
 
 // Function to calculate the minimum distance among array values
 float checkDistance(float angle_range[], float min_value, float max_value)
@@ -18,7 +17,7 @@ float checkDistance(float angle_range[], float min_value, float max_value)
     // set the max distance for the laser to not occure of errors
     float value = 50;
 
-    // check every element of the array and 
+    // check every element of the array and
     for (int i = min_value; i < max_value; i++)
     {
         // if the value is less then the distance, update it
@@ -72,9 +71,9 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
 }
 
 // Function that has to take the msg value of the velocity
-void ManageSpeed(const Assignment2_RT1::Velocity_message::ConstPtr& speed)
+void ManageSpeed(const Assignment2_RT1::Velocity_message::ConstPtr &speed)
 {
-    std::cout << "New value of speed is: "<<speed->velocity_msg<<"\n";
+    std::cout << "New value of speed is: " << speed->velocity_msg << "\n";
     vel = speed->velocity_msg;
 }
 
@@ -86,7 +85,7 @@ int main(int argc, char **argv)
 
     // Define subscribers to the message (/Velocity_message) and to the ros topic (/base_scan)
     ros::Subscriber sub = nh.subscribe("/base_scan", 1, ControlRobotTrack);
-    ros::Subscriber sub2 = nh.subscribe("/Velocity_message", 1, ManageSpeed); 
+    ros::Subscriber sub2 = nh.subscribe("/Velocity_message", 1, ManageSpeed);
 
     // advertise the topic /cmd_vel with the publisher
     pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);

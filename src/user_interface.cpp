@@ -32,7 +32,8 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
               << std::endl;
     std::cout << "'q': quit the user interface node\n"
               << std::endl;
-    std::cout << "************************************************************\n" << std::endl;
+    std::cout << "************************************************************\n"
+              << std::endl;
 
     // Define a service object that sends a request to the server
     Assignment2_RT1::Velocity_service service;
@@ -58,7 +59,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
     // If the input is valid check which it is and chooses what to do
     if (valid_input = true)
     {
-        // for every input show a visible feedback it is pressed and than 
+        // for every input show a visible feedback it is pressed and than
         // wait for the existance of the server, send the input as a request of the server and call it
         if (user_input == '+')
         {
@@ -97,7 +98,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
         message.velocity_msg = service.response.value;
         pub.publish(message);
         std::cout << "Speed updated, the new value is: " << service.response.value << "\n\n";
-        valid_input=false;
+        valid_input = false;
     }
     else
         std::cout << "Not valid input! Please try again.\n"
