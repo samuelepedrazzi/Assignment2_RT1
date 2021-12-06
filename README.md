@@ -112,7 +112,5 @@ The service node controls the robot's speed and collaborates closely with the UI
 It just verifies the character received by the UI node and adjusts the speed accordingly.
 When the button R is pressed, the service uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
 
-<img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=100>
-
-UI node
+UI node <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=100>
 ------
