@@ -34,7 +34,7 @@ bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignm
         ros::service::call("/reset_positions", reset);
         break;
 
-    //if 'q' is the input received, the user interfacenode is closed
+    //if 'q' is the input received, the user interface node/server communication is closed, and the server node terminated
     case 'q':
         ros::shutdown();
         break;
