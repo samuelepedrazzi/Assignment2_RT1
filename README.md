@@ -108,7 +108,7 @@ The controller node then publishes the data to the '/cmd vel' topic, which is us
 Server node
 --------------
 
-The service node controls the robot's speed and collaborates closely with the UI node, which is responsible for interacting with the final user.
+The server node controls the robot's speed and collaborates closely with the UI node, which is responsible for interacting with the final user.
 It just verifies the character received by the UI node and adjusts the speed accordingly.
 When the button R is pressed, the service uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
 
