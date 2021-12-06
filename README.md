@@ -105,15 +105,15 @@ The UI node manages '/Velocity_message' based on the information he receives fro
 The controller node then publishes the data to the '/cmd vel' topic, which is used to control the robot's movement. 
 
 
-Service node
+Server node
 --------------
 
 The service node controls the robot's speed and collaborates closely with the UI node, which is responsible for interacting with the final user.
 It just verifies the character received by the UI node and adjusts the speed accordingly.
 When the button R is pressed, the service uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
 
-UI node  <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=150>
----------
+User_interface node  <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=150>
+---------------
 The user interface node, as its name implies, acts as a connection to the other parts of the project, communicating with other nodes, server, and controller.
 It takes the terminal's input and sends a request to the server, which returns a response to the user_interface node.
 This occurs entirely within the UICallbackFunction(). 
