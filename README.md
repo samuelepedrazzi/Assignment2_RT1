@@ -20,7 +20,7 @@ In 'Assignment2_RT1' can be found several folders:
 * 'gitignore': file that specifies intentionally untracked files that Git should ignore, not showing because not relevant and necessary for the project.
 
 
-Installing and running 
+Installing and running <img src="https://media4.giphy.com/media/I8PIclm22mhMfJq0qx/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=80>
 -----------------------
 
 The simulator requires [__ROS__](http://wiki.ros.org) (__Robot-Operating-Systems__), which is a collection of software libraries and tools that assist in the development of robot applications, especially it runs flawlessly on the [Noetic Release of ROS](http://wiki.ros.org/noetic/Installation).
@@ -112,8 +112,17 @@ The service node controls the robot's speed and collaborates closely with the UI
 It just verifies the character received by the UI node and adjusts the speed accordingly.
 When the button R is pressed, the service uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
 
+UI node <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=150>
+------
+
+
+
+
+
+
+
+
+
+
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
-
-UI node <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=100>
-------
