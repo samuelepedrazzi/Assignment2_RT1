@@ -13,10 +13,11 @@ In 'Assignment2_RT1' can be found several folders:
 * 'CMakeLists.txt': text file describing how to build the code and where to install it
 * 'package.xml': XML file defining properties about the package such as the package name, version numbers, authors, maintainers, and dependencies on other catkin packages
 
-* 'src': folder containing two C++ scripts ('robot controller.cpp' and 'robot GUI.cpp') that implement two nodes: one that controls the robot and does some operations on demand, and the other that interacts with the user and sends requests to the first.
+* 'src': folder containing three C++ files ('controller.cpp','server.cpp' and 'user_interface.cpp') that implement, respectively, three nodes: one that controls the robot movement along the circuit, one that corresponds to the actual server which receive the client request from the user_interface node and the last that interacts with the user.
 
 * 'srv': folder containing a custom ROS service ('ChangeVel.srv') with the goal of bringing the two previously stated nodes together.
-* 'gitignore': a file which duty is to avoid showing some files which are not necessary to the main target of the project.
+* 'msg': ROS uses a simplified messages description language for describing the data values that ROS nodes publish. The message used in this assignment is 'Velocity_message' which describes the speed value. /Velocity_message is managed by the user_interface node, according to what he receives from the /service node.
+* 'gitignore': file that specifies intentionally untracked files that Git should ignore, not showing because not relevant and necessary for the project.
 
 
 Installing and running 
