@@ -23,8 +23,7 @@ In 'Assignment2_RT1' can be found several folders:
 Installing and running 
 -----------------------
 
-The simulator requires [__ROS__](http://wiki.ros.org) (__Robot-Operating-Systems__) to be installed on the machine. In particular, the [Noetic Release of ROS](http://wiki.ros.org/noetic/Installation) was used.
-
+The simulator requires [__ROS__](http://wiki.ros.org) (__Robot-Operating-Systems__), which is a collection of software libraries and tools that assist in the development of robot applications, especially it runs flawlessly on the [Noetic Release of ROS](http://wiki.ros.org/noetic/Installation).
 In order to run the simulation, first you have to run ROS (using ```$ roscore &``` and ```$ catkin_make``` ), then you should run this commands, one per console page:
 
 ```console
