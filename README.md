@@ -93,7 +93,7 @@ The controller node enters the 'ControlRobotTrack' function after receiving a me
 The function then looks for the minimum value in each of the three sets and decides what action to take:
 
 
-* if the front wall is closer than 'front min = 2' meters, he checks the lateral distances: 
+* if the front wall is closer than 'front min = 1.5' meters, he checks the lateral distances: 
     * if the left distance is greater than the right distance, he gradually turns to the right 
     * alternatively, he slightly turns to the left.
 
