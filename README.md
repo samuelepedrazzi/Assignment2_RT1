@@ -1,4 +1,4 @@
-Assignment 2 - Research Track 1 
+Assignment 2 - Research Track 1  <img src="https://t3.ftcdn.net/jpg/00/88/57/38/240_F_88573852_XNMQfC8Q0euvvzUfXONvniqsto86Te9r.jpg" width=30>
 ================================
 
 -----------------------
