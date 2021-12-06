@@ -3,7 +3,7 @@ Assignment 2 - Research Track 1
 
 -----------------------
 
-Introduction <img src="https://t3.ftcdn.net/jpg/00/88/57/38/240_F_88573852_XNMQfC8Q0euvvzUfXONvniqsto86Te9r.jpg" width=80>
+Introduction <img src="https://cdn-icons.flaticon.com/png/128/938/premium/938446.png?token=exp=1638810619~hmac=8e90b3ff1b676750c291169f96f29c01" width=80>
 ------------
 
 The goal of the project is to create a robot that can 'drive autonomously' inside the [Autodromo Nazionale di Monza](https://www.monzanet.it/) while paying attention not to crash with the circuit limitations.'
