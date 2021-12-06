@@ -76,7 +76,7 @@ Aside from that, I utilized a regular service from the'std srvs' package called 
 
 The'std srvs' package offers a sort of service called ['Empty'](https://docs.ros.org/en/api/std srvs/html/srv/Empty.html), which exchanges no actual data with the client but has proven to be highly beneficial for resetting the robot's location to its beginning point. 
 
-Controller node
+Controller node  <img src= "https://giphy.com/stickers/uniliteuk-f1-unilite-fastest-lap-y6PJrkD2AiME0B9sin" width=40>
 --------------
 
 The controller node has the ability to drive around the track endlessly, detecting straights and turns autonomously.
