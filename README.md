@@ -67,14 +67,14 @@ This file contains information about the world, including barriers (which are ty
 The node only exposes a subset of Stage's functionality via ROS.
 It looks for Stage models of the types laser, camera, and location, and maps them to the ROS subjects listed below.
 Stageros exits if at least one laser/camera and position model are not discovered. 
-The subscription to the topic 'cmd vel' from the 'geometry_msgs' package, which provides a ['Twist'](https://docs.ros.org/en/api/geometry msgs/html/msg/Twist.html) type message to express the velocity of a robot in free space, broken into its linear and angular parts, is a very useful feature of the Stageros Node.
+The subscription to the topic 'cmd_vel' from the 'geometry_msgs' package, which provides a ['Twist'](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html) type message to express the velocity of a robot in free space, broken into its linear and angular parts, is a very useful feature of the Stageros Node.
 
-The Stageros Node additionally uses the'sensor msgs' package's 'base scan' topic, which provides a ['LaserScan'](https://docs.ros.org/en/api/sensor msgs/html/msg/LaserScan.html) type message to represent a single scan from a planar laser range-finder.
+The Stageros Node additionally uses the'sensor_msgs' package's 'base scan' topic, which provides a ['LaserScan'](https://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html) type message to represent a single scan from a planar laser range-finder.
 
 
 Aside from that, I utilized a regular service from the'std srvs' package called 'reset_positions.'
 
-The'std srvs' package offers a sort of service called ['Empty'](https://docs.ros.org/en/api/std srvs/html/srv/Empty.html), which exchanges no actual data with the client but has proven to be highly beneficial for resetting the robot's location to its beginning point. 
+The'std srvs' package offers a sort of service called ['Empty'](https://docs.ros.org/en/api/std_srvs/html/srv/Empty.html), which exchanges no actual data with the client but has proven to be highly beneficial for resetting the robot's location to its beginning point. 
 
 Implementation choices
 --------------
