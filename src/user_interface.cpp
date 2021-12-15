@@ -11,7 +11,7 @@ ros::Publisher pub;
 // Function to read the char taken as input
 char GetInput()
 {
-    char input;
+    char input; 
     std::cout << "Please enter a command.\n"
               << std::endl;
     std::cin >> input;
