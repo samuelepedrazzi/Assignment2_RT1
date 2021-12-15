@@ -92,7 +92,7 @@ In the primary purpose, I define a subscriber to the "/base_scan" topic and a pu
 Thanks to the function CheckDistance(), the robot can detect the shortest distance to the walls on its right, left and front.
 In the function that manages the robot movement, there are initialized three arrays which helps me in identifying the distances in the different directions based on the base_scan topic:
 
-``` C
+```cpp
 	right = checkDistance(range_view, 0, 100);
    
    left = checkDistance(range_view, 620, 720);
@@ -123,7 +123,7 @@ When the button R is pressed, the server uses the '/reset positions' service to 
 
 More specifically the server will accept the user interface node's client request.
 
-The different client requests are handled using a switch-case statement. The '+' allows for acceleration, the '-' for deceleration, and the 'R/r' for calling the 'reset_position' function from the 'std_srvs' package: this utility made resetting the robot to its initial position relatively simple.
+The different client requests are handled using a switch-case statement. The '+' allows for acceleration, the '-' for deceleration, 'q' to stop and close the UI node, and so also the communication with the server and the 'R/r' for calling the 'reset_position' function from the 'std_srvs' package: this utility made resetting the robot to its initial position relatively simple.
 
 User_interface node  <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=150>
 ---------------
@@ -131,13 +131,47 @@ The user interface node, as its name implies, acts as a connection to the other 
 It takes the terminal's input and sends a request to the server, which returns a response to the user_interface node.
 This occurs entirely within the UICallbackFunction(). 
 
+When an external input is received, it is relayed to the controller node, which replies by giving back the robot's acceleration degree.
+A custom service called Velocity_service.srv is created to implement this client-server communication architecture.
+The service's structure is as follows: 
+``` xml
+     char input
+     ---
+     float32 value
+```
+
+* char input is the character typed on the keyboard by the user: '+','-','R/r','q' are the valid inputs.
+
+* The degree of robot acceleration delivered as a response from the server to the client is represented by a float32 number.
+
+<center>
+
+| Input | Description|
+|:--------:|:----------:|
+|__[+]__       |__To Accelerate__|
+|__[-]__       |__To Decelerate__|
+|__[R]/[r]__   |__To Reset the position__|
+|__[q]__       |__To Close the UI node__|
+	
+</center>
 
 
-
-
-
-
-
-
+```cpp
+void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
+{
+    std::cout << "************************************************************" << std::endl;
+    std::cout << "Welcome to the user interface, you can choose from a range of inputs to control the robot\n"
+              << std::endl;
+    std::cout << "'+': increment the linear velocity\n"
+              << std::endl;
+    std::cout << "'-': decrement the linear velocity\n"
+              << std::endl;
+    std::cout << "'R/r': reset the robot in the inital position in the circuit\n"
+              << std::endl;
+    std::cout << "'q': quit the user interface node\n"
+              << std::endl;
+    std::cout << "************************************************************\n"
+              << std::endl;
+```
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
