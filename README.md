@@ -117,9 +117,13 @@ The controller node then publishes the data to the '/cmd vel' topic, which is us
 Server node
 --------------
 
-The server node controls the robot's speed and collaborates closely with the UI node, which is responsible for interacting with the final user.
+The server node controls the robot's speed and collaborates closely with the user interface node, which is responsible for interacting with the final user.
 It just verifies the character received by the UI node and adjusts the speed accordingly.
-When the button R is pressed, the service uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
+When the button R is pressed, the server uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
+
+More specifically the server will accept the user interface node's client request.
+
+The different client requests are handled using a switch-case statement. The '+' allows for acceleration, the '-' for deceleration, and the 'R/r' for calling the 'reset_position' function from the 'std_srvs' package: this utility made resetting the robot to its initial position relatively simple.
 
 User_interface node  <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=150>
 ---------------
