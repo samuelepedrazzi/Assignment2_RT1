@@ -89,6 +89,8 @@ Afterwards it has implemented a user interface for taking input from the keyboar
     
 </p>
 
+In a few words, the user will provide an input to the user interface node that will either be valid ('+' ,'-', 'R/r','q') or a bad one, resulting in an error input on the console. This input will be processed by the server, which will release a float value that will be the increased speed value. The user interface will then send a specific message to the controller node, which will read the real increasing value. The controller node will then communicate updated velocity information to the stageros node. Another responsibility assigned to the server node is to invoke a service from the ROS library that resets the robot's position.
+
 Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200w.webp?cid=790b7611ycpbu1vkn0w4lha1xn131bjf2x8r6uj2bckcsqkk&rid=200w.webp&ct=s" width=50>
 --------------
 
@@ -119,10 +121,12 @@ Otherwise the robot travels straight, if the wall is further than the threshold,
 The UI node manages '/Velocity_message' based on the information he receives from the '/service' node.
 
 
-The controller node then publishes the data to the '/cmd vel' topic, which is used to control the robot's movement. 
+The controller node then publishes the data to the '/cmd_vel' topic, which is used to control the robot's movement. 
 
 Flowchart
 ---------
+
+Here below can be found the main idea behind the controller node's way of implementation.
 
 ![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Controller_Node.drawio.png)
 
@@ -166,8 +170,10 @@ The former screen of the UI is shown as follows:
 
 ![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.png)
 
-Possible future improvements
+Conclusions and possible future improvements
 --------------
+
+Overall, I was pleased with the job, especially since this was the first real project I'd attempted with ROS. I realized the tool's potential and what can be readily built with it.
 
 For example, the robot might be improved by adding the ability to follow the wall in order to avoid zigzagging in specific situations. Furthermore, though it is not needed in the assignment, the best ratio between linear and angular velocity throughout the corner could be used to avoid collisions when turning.
 
@@ -175,5 +181,5 @@ Except for those enhancements, the robot has good behavior; the velocity cannot 
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=60>
 
-It might also be possible to modify the robot's speed dynamically, like real autos do: The robot can travel at a rate that is inversely proportional to the amount of straight time it has left. However, in this example, the user input will be rendered worthless.
+It might also be possible to modify the robot's speed dynamically, like real cars do: The robot can travel at a rate that is inversely proportional to the amount of straight time it has left. However, in this example, the user input will be rendered worthless.
 
