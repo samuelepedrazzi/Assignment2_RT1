@@ -19,7 +19,6 @@ In 'Assignment2_RT1' can be found several folders:
 * 'msg': ROS uses a simplified messages description language for describing the data values that ROS nodes publish. The message used in this assignment is 'Velocity_message' which describes the speed value. /Velocity_message is managed by the user_interface node, according to what he receives from the /service node.
 * 'gitignore': file that specifies intentionally untracked files that Git should ignore, not showing because not relevant and necessary for the project.
 
-
 Installing and running <img src="https://media4.giphy.com/media/I8PIclm22mhMfJq0qx/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=80>
 -----------------------
 
@@ -30,25 +29,25 @@ In order to run the simulation, first you have to run ROS (using ```$ roscore &`
 $ rosrun stage_ros stageros $(rospack find RT1_Assignment2)/world/my_world.world
 ```
 
-(This particular command will open the game circuit)
+(This specific command will open the circuit)
 
 
 ```console
 $ rosrun RT1_Assignment2 controller
 ```
-(This particular command will run the controller node used to drive autonomously)
+(This command executes the controller node that is used for autonomous driving)
 
 ```console
 $ rosrun RT1_Assignment2 server
 ```
-(This particular command will run the service used to increase or decrease speed)
+(This particular command will run the service used to increase or decrease the speed)
 
 ```console
 $ rosrun RT1_Assignment2 UI
 ```
-(This particular command will run the UI that can control the velocity)
+(This specific command will run the user interface node with which the speed can be managed)
 
-Game environment
+Circuit environment
 ---------
 
 Here's the Monza track used in this game:
@@ -76,19 +75,19 @@ Aside from that, I utilized a regular service from the'std srvs' package called 
 
 The'std srvs' package offers a sort of service called ['Empty'](https://docs.ros.org/en/api/std srvs/html/srv/Empty.html), which exchanges no actual data with the client but has proven to be highly beneficial for resetting the robot's location to its beginning point. 
 
+Implementation choices
+--------------
+
+Initially, there was implemented the code that allowed the robot to move autonomously within the environment. This allows publishers and subscribers to change their behavior with feedback from the robot.
+Afterwards it has implemented a user interface for taking input from the keyboard and modifying the speed of the robot in the circuit. Thanks to the service that establishes communication between all nodes, all the changes can be calculated.
+
 Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200w.webp?cid=790b7611ycpbu1vkn0w4lha1xn131bjf2x8r6uj2bckcsqkk&rid=200w.webp&ct=s" width=50>
 --------------
 
 The controller node has the ability to drive around the track endlessly, detecting straights and turns autonomously.
 When the robot is approaching a turn, the node tells him to slow down so he can make the necessary adjustments.
 
-
-After the '/base scan' publisher subscribes to it, the controller uses all of the sensors data acquired by him.
-This topic is made up of 720 _ranges_, each of which contains all of the detected distances.
-Each sensor has a 1/4-degree field of vision and can observe from -90 to 90 degrees.
-
-
-The controller node enters the 'ControlRobotTrack' function after receiving a message from '/base scan,' which filters all ranges except those from: -100° to -60°,  -20° to 20°,  60° to 100°. 
+In the primary purpose, I define a subscriber to the "/base_scan" topic and a publisher to the "/cmd_vel" topic, using the public / subscribe method. The base_scan topic can provide an array named 'ranges' with 720 items that correspond to the distances from obstacles in a range of 0 to 180 degrees; cmd_vel, on the other hand, can change robot velocity. The main idea behind the code is that whenever the array 'ranges' changes, the ControlRobotTrack() is called, and the linear velocity is changed based on the distances detected by the laser, thanks to the publishing on the cmd_vel topic.
 
 The function then looks for the minimum value in each of the three sets and decides what action to take:
 
