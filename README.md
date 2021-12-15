@@ -82,6 +82,7 @@ Initially, there was implemented the code that allowed the robot to move autonom
 
 Afterwards it has implemented a user interface for taking input from the keyboard and modifying the speed of the robot in the circuit. Thanks to the service that establishes communication between all nodes, all the changes can be calculated.
 
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/ROS_nodes.png)
 
 Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200w.webp?cid=790b7611ycpbu1vkn0w4lha1xn131bjf2x8r6uj2bckcsqkk&rid=200w.webp&ct=s" width=50>
 --------------
@@ -115,6 +116,10 @@ The UI node manages '/Velocity_message' based on the information he receives fro
 
 The controller node then publishes the data to the '/cmd vel' topic, which is used to control the robot's movement. 
 
+Flowchart
+---------
+
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Controller_Node.png)
 
 
 Server node
@@ -154,7 +159,7 @@ The service's structure is as follows:
 
 The former screen of the UI is shown as follows:
 
-![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.png)))
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.png)
 
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
