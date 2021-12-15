@@ -87,10 +87,20 @@ Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200
 The controller node has the ability to drive around the track endlessly, detecting straights and turns autonomously.
 When the robot is approaching a turn, the node tells him to slow down so he can make the necessary adjustments.
 
-In the primary purpose, I define a subscriber to the "/base_scan" topic and a publisher to the "/cmd_vel" topic, using the public / subscribe method. The base_scan topic can provide an array named 'ranges' with 720 items that correspond to the distances from obstacles in a range of 0 to 180 degrees; cmd_vel, on the other hand, can change robot velocity. The main idea behind the code is that whenever the array 'ranges' changes, the ControlRobotTrack() is called, and the linear velocity is changed based on the distances detected by the laser, thanks to the publishing on the cmd_vel topic.
+In the primary purpose, I define a subscriber to the "/base_scan" topic and a publisher to the "/cmd_vel" topic, using the public / subscribe method. The base_scan topic is a publisher that can provide an array named 'ranges' with 720 items that correspond to the distances from obstacles in a range of 0 to 180 degrees; cmd_vel, on the other hand, can change robot velocity. The main idea behind the code is that whenever the array 'ranges' changes, the ControlRobotTrack() is called, and the linear velocity is changed based on the distances detected by the laser, thanks to the publishing on the cmd_vel topic.
 
-The function then looks for the minimum value in each of the three sets and decides what action to take:
+Thanks to the function CheckDistance(), the robot can detect the shortest distance to the walls on its right, left and front.
+In the function that manages the robot movement, there are initialized three arrays which helps me in identifying the distances in the different directions based on the base_scan topic:
 
+``` C
+	right = checkDistance(range_view, 0, 100);
+   
+   left = checkDistance(range_view, 620, 720);
+  
+   front = checkDistance(range_view, 310, 410);
+```
+
+The function implemented looks for the minimum value in each of the three sets and decides what action to take:
 
 * if the front wall is closer than 'front min = 1.5' meters, he checks the lateral distances: 
     * if the left distance is greater than the right distance, he gradually turns to the right 
