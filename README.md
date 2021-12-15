@@ -154,7 +154,7 @@ The service's structure is as follows:
 
 The former screen of the UI is shown as follows:
 
-![alt text](https://github.com/samuelepedrazzi/Research-Track-1/blob/main/images/token_silver.png)))
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.jpeg)))
 
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
