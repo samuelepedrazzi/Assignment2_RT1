@@ -165,5 +165,14 @@ The former screen of the UI is shown as follows:
 
 ![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.png)
 
+Possible future improvements
+--------------
 
-<img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
+<img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=150 height=80>
+
+For example, the robot might be improved by adding the ability to follow the wall in order to avoid zigzagging in specific situations. Furthermore, though it is not needed in the assignment, the best ratio between linear and angular velocity throughout the corner could be used to avoid collisions when turning.
+
+Except for those enhancements, the robot has good behavior; the velocity cannot be increased too much, it can drive all the way around the circuit without problems and for many laps: for instance, with a speed of 7/8, the robot can drive all the way around the circuit without problems; with more velocity may can collide sometimes the walls.
+
+It might also be possible to modify the robot's speed dynamically, like real autos do: The robot can travel at a rate that is inversely proportional to the amount of straight time it has left. However, in this example, the user input will be rendered worthless.
+
