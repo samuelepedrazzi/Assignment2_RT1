@@ -84,7 +84,7 @@ Afterwards it has implemented a user interface for taking input from the keyboar
 
 <p align="center">
     
-<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png" width="1000" height="500">
+<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png" width="800" height="400">
     
 </p>
 
