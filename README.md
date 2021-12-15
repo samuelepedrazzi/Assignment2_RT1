@@ -82,7 +82,7 @@ Initially, there was implemented the code that allowed the robot to move autonom
 
 Afterwards it has implemented a user interface for taking input from the keyboard and modifying the speed of the robot in the circuit. Thanks to the service that establishes communication between all nodes, all the changes can be calculated.
 
-![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png)
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png) width=200
 
 Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200w.webp?cid=790b7611ycpbu1vkn0w4lha1xn131bjf2x8r6uj2bckcsqkk&rid=200w.webp&ct=s" width=50>
 --------------
