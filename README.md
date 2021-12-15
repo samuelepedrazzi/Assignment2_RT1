@@ -34,17 +34,17 @@ $ rosrun stage_ros stageros $(rospack find RT1_Assignment2)/world/my_world.world
 
 
 ```console
-$ rosrun RT1_Assignment2 controller
+$ rosrun Assingment2_RT1 controller
 ```
 (This command executes the controller node that is used for autonomous driving)
 
 ```console
-$ rosrun RT1_Assignment2 server
+$ rosrun Assingment2_RT1 server
 ```
 (This particular command will run the service used to increase or decrease the speed)
 
 ```console
-$ rosrun RT1_Assignment2 UI
+$ rosrun Assingment2_RT1 user_interface
 ```
 (This specific command will run the user interface node with which the speed can be managed)
 
