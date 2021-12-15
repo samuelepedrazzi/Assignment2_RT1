@@ -170,7 +170,7 @@ Possible future improvements
 
 For example, the robot might be improved by adding the ability to follow the wall in order to avoid zigzagging in specific situations. Furthermore, though it is not needed in the assignment, the best ratio between linear and angular velocity throughout the corner could be used to avoid collisions when turning.
 
-Except for those enhancements, the robot has good behavior; the velocity cannot be increased too much, it can drive all the way around the circuit without problems and for many laps: for instance, with a speed of 7/8, the robot can drive all the way around the circuit without problems; with more velocity may can collide sometimes the walls.
+Except for those enhancements, the robot has good behavior; the velocity cannot be increased too much, it can drive all the way around the circuit without problems and for many laps: for instance, with a speed of 7/8, the robot can drive all the way around the circuit without problems; with more velocity it may can sometimes collide the walls.
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=60>
 
