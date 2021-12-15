@@ -93,7 +93,7 @@ Thanks to the function CheckDistance(), the robot can detect the shortest distan
 In the function that manages the robot movement, there are initialized three arrays which helps me in identifying the distances in the different directions based on the base_scan topic:
 
 ```cpp
-	right = checkDistance(range_view, 0, 100);
+   right = checkDistance(range_view, 0, 100);
    
    left = checkDistance(range_view, 620, 720);
   
@@ -123,7 +123,11 @@ When the button R is pressed, the server uses the '/reset positions' service to 
 
 More specifically the server will accept the user interface node's client request.
 
-The different client requests are handled using a switch-case statement. The '+' allows for acceleration, the '-' for deceleration, 'q' to stop and close the UI node, and so also the communication with the server and the 'R/r' for calling the 'reset_position' function from the 'std_srvs' package: this utility made resetting the robot to its initial position relatively simple.
+The different client requests are handled using a switch-case statement. The '+' allows for acceleration, the '-' for deceleration, 'q' to shutdown the UI node and publishers and subscribers to this node, and the 'R/r' for calling the 'reset_position' function from the 'std_srvs' package: this utility made resetting the robot to its initial position relatively simple.
+
+Important to notice is the ros shutdown() function which is used for killing all open subscriptions, publications, service calls, and service servers. By default roscpp also installs a SIGINT handler which will detect Ctrl-C and automatically shutdown for the user. It can be useful if we want to stop the server and the controller at the same time. 
+Then if we want to reload and restart the robot just re-run the commands in the terminal to start the closed nodes.
+
 
 User_interface node  <img src="https://media0.giphy.com/media/p90XvKCcFnKZHEta4y/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=150>
 ---------------
@@ -134,6 +138,7 @@ This occurs entirely within the UICallbackFunction().
 When an external input is received, it is relayed to the controller node, which replies by giving back the robot's acceleration degree.
 A custom service called Velocity_service.srv is created to implement this client-server communication architecture.
 The service's structure is as follows: 
+
 ``` xml
      char input
      ---
@@ -144,34 +149,8 @@ The service's structure is as follows:
 
 * The degree of robot acceleration delivered as a response from the server to the client is represented by a float32 number.
 
-<center>
-
-| Input | Description|
-|:--------:|:----------:|
-|__[+]__       |__To Accelerate__|
-|__[-]__       |__To Decelerate__|
-|__[R]/[r]__   |__To Reset the position__|
-|__[q]__       |__To Close the UI node__|
-	
-</center>
+The screen is shown as follows:
 
 
-```cpp
-void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
-{
-    std::cout << "************************************************************" << std::endl;
-    std::cout << "Welcome to the user interface, you can choose from a range of inputs to control the robot\n"
-              << std::endl;
-    std::cout << "'+': increment the linear velocity\n"
-              << std::endl;
-    std::cout << "'-': decrement the linear velocity\n"
-              << std::endl;
-    std::cout << "'R/r': reset the robot in the inital position in the circuit\n"
-              << std::endl;
-    std::cout << "'q': quit the user interface node\n"
-              << std::endl;
-    std::cout << "************************************************************\n"
-              << std::endl;
-```
 
 <img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
