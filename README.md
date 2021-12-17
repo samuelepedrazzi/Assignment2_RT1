@@ -58,7 +58,7 @@ Stageros
 By using libstage, the stageros node covers the Stage 2-D multi-robot simulator.
 Stage is a program that replicates a world defined in a.world file.
 This file contains information about the world, including barriers (which are typically represented as a bitmap and utilized as a kind of background), robots, and other items.
-
+ 
 The node only exposes a subset of Stage's functionality via ROS.
 It looks for Stage models of the types laser, camera, and location, and maps them to the ROS subjects listed below.
 Stageros exits if at least one laser/camera and position model are not discovered. 
