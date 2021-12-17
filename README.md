@@ -54,7 +54,7 @@ ROS generate the track arena based on this image, using the file `.world` contin
 
 Stageros
 ------------
-
+ 
 By using libstage, the stageros node covers the Stage 2-D multi-robot simulator.
 Stage is a program that replicates a world defined in a.world file.
 This file contains information about the world, including barriers (which are typically represented as a bitmap and utilized as a kind of background), robots, and other items.
