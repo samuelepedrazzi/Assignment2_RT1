@@ -2,16 +2,14 @@
 #include "geometry_msgs/Twist.h"
 #include "sensor_msgs/LaserScan.h"
 #include "Assignment2_RT1/Velocity_service.h"
-#include "Assignment2_RT1/Velocity_message.h"
 
-// Defining a ServiceClient object 'client' and a publisher
+// Defining a ServiceClient object 'client'
 ros::ServiceClient client;
-ros::Publisher pub;
 
 // Function to read the char taken as input
 char GetInput()
 {
-    char input; 
+    char input;
     std::cout << "Please enter a command.\n"
               << std::endl;
     std::cin >> input;
@@ -93,10 +91,7 @@ void UICallbackFunction(const sensor_msgs::LaserScan::ConstPtr &msg)
             service.request.input = 'q';
             client.call(service);
         }
-        // Define a message to send the response to the controller node, according to the message defined and to the service response
-        Assignment2_RT1::Velocity_message message;
-        message.velocity_msg = service.response.value;
-        pub.publish(message);
+
         std::cout << "Speed updated, the new value is: " << service.response.value << "\n\n";
         valid_input = false;
     }
@@ -114,9 +109,8 @@ int main(int argc, char **argv)
 
     // Call the service with the client
     client = nh.serviceClient<Assignment2_RT1::Velocity_service>("/service");
-    // Define the subscriber to the ros topic (/base_scan) and advertise the topic of the message
+    // Define the subscriber to the ros topic (/base_scan)
     ros::Subscriber sub = nh.subscribe("/base_scan", 1, UICallbackFunction);
-    pub = nh.advertise<Assignment2_RT1::Velocity_message>("/Velocity_message", 1);
 
     ros::spin();
     return 0;

@@ -1,11 +1,15 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
 #include "sensor_msgs/LaserScan.h"
-#include "Assignment2_RT1/Velocity_message.h"
+#include "Assignment2_RT1/Velocity_service.h"
+#include "std_srvs/Empty.h"
 
 // Initializing the publisher and the message of type geometry_msgs::Twist
 ros::Publisher pub;
 geometry_msgs::Twist robot_vel;
+
+// Defining the Empty object reset which is needed to reset the robot position and the first value of the speed
+std_srvs::Empty reset;
 
 // Define global variables for the frontal threshold and the initial velocity
 float front_min = 1.5;
@@ -27,7 +31,7 @@ float checkDistance(float angle_range[], float min_value, float max_value)
     return value;
 }
 
-// Function to control the robot movement and manage its speed
+// Function to control the robot movement and manage its speed - the parameter msg is the message published into base_scan topic
 void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
 {
     // Initializing the array of the laser scans and the variables in which there will be the actual values of distance for the specific range
@@ -70,11 +74,45 @@ void ControlRobotTrack(const sensor_msgs::LaserScan::ConstPtr &msg)
     pub.publish(robot_vel);
 }
 
-// Function that has to take the msg value of the velocity
-void ManageSpeed(const Assignment2_RT1::Velocity_message::ConstPtr &speed)
+// Function that returns true if an input has arrived and chooses what to do based on it:
+// it is dedicated to the change of the velocity communicating with the user interface.
+bool UpdateVelocity(Assignment2_RT1::Velocity_service::Request &request, Assignment2_RT1::Velocity_service::Response &response)
 {
-    std::cout << "New value of speed is: " << speed->velocity_msg << "\n";
-    vel = speed->velocity_msg;
+    switch (request.input)
+    {
+
+    //increase speed
+    case '+':
+        vel += 1;
+        break;
+
+    //decrease speed
+    case '-':
+        if (vel >= 2)
+        {
+            vel -= 1;
+        }
+        break;
+
+    //reset the robot in the initial position by callig the service reset_positions
+    case 'r':
+    case 'R':
+        vel = 1;
+        ros::service::call("/reset_positions", reset);
+        break;
+
+    //if 'q' is the input received, the user interface node/controller communication is closed
+    case 'q':
+        ros::shutdown();
+        break;
+    default:
+        break;
+    }
+    // Updating and showing the changed value of speed
+    response.value = vel;
+    ROS_INFO("Updated speed: @[%.2f]", response.value);
+
+    return true;
 }
 
 int main(int argc, char **argv)
@@ -85,9 +123,11 @@ int main(int argc, char **argv)
 
     // Define subscribers to the message (/Velocity_message) and to the ros topic (/base_scan)
     ros::Subscriber sub = nh.subscribe("/base_scan", 1, ControlRobotTrack);
-    ros::Subscriber sub2 = nh.subscribe("/Velocity_message", 1, ManageSpeed);
 
-    // advertise the topic /cmd_vel with the publisher
+    // Define the service and call the UpdateVelocity() function, which has to tell ros that there is a new avaliable service managed from the controller
+    ros::ServiceServer service = nh.advertiseService("/service", UpdateVelocity);
+
+    // advertise, the server publishes updates, the topic /cmd_vel
     pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
     ros::spin();
     return 0;
