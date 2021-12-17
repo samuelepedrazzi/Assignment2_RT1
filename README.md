@@ -6,7 +6,7 @@ Robot simulator using ROS
 
 Introduction <img src="https://cdn-icons.flaticon.com/png/128/938/premium/938446.png?token=exp=1639580920~hmac=6e5542379ff653021e57312c3f419fde" width=40>
 ------------
-
+ 
 The goal of the project is to create a robot that can 'drive autonomously' inside the [Autodromo Nazionale di Monza](https://www.monzanet.it/) while paying attention not to crash with the circuit limitations.
 
 In 'Assignment2_RT1' can be found several folders:
@@ -80,7 +80,7 @@ Afterwards it has implemented a user interface for taking input from the keyboar
 
 <p align="center">
     
-<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png" width="600" height="350">
+<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_nodes.drawio.png" width="600" height="350">
     
 </p>
 
