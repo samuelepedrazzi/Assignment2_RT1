@@ -1,4 +1,5 @@
-Assignment 2 - Research Track 1  
+# Assignment 2 - [Research_Track_1](https://unige.it/en/off.f/2021/ins/51201.html?codcla=10635) , [Robotics Engineering](https://courses.unige.it/10635).
+Robot simulator using ROS
 ================================
 
 -----------------------
@@ -6,7 +7,7 @@ Assignment 2 - Research Track 1
 Introduction <img src="https://cdn-icons.flaticon.com/png/128/938/premium/938446.png?token=exp=1639580920~hmac=6e5542379ff653021e57312c3f419fde" width=40>
 ------------
 
-The goal of the project is to create a robot that can 'drive autonomously' inside the [Autodromo Nazionale di Monza](https://www.monzanet.it/) while paying attention not to crash with the circuit limitations.'
+The goal of the project is to create a robot that can 'drive autonomously' inside the [Autodromo Nazionale di Monza](https://www.monzanet.it/) while paying attention not to crash with the circuit limitations.
 
 In 'Assignment2_RT1' can be found several folders:
 * 'world': folder containing information about the characteristics of the simulator's world
@@ -33,17 +34,17 @@ $ rosrun stage_ros stageros $(rospack find RT1_Assignment2)/world/my_world.world
 
 
 ```console
-$ rosrun RT1_Assignment2 controller
+$ rosrun Assingment2_RT1 controller
 ```
 (This command executes the controller node that is used for autonomous driving)
 
 ```console
-$ rosrun RT1_Assignment2 server
+$ rosrun Assingment2_RT1 server
 ```
 (This particular command will run the service used to increase or decrease the speed)
 
 ```console
-$ rosrun RT1_Assignment2 UI
+$ rosrun Assingment2_RT1 user_interface
 ```
 (This specific command will run the user interface node with which the speed can be managed)
 
@@ -66,14 +67,14 @@ This file contains information about the world, including barriers (which are ty
 The node only exposes a subset of Stage's functionality via ROS.
 It looks for Stage models of the types laser, camera, and location, and maps them to the ROS subjects listed below.
 Stageros exits if at least one laser/camera and position model are not discovered. 
-The subscription to the topic 'cmd vel' from the 'geometry_msgs' package, which provides a ['Twist'](https://docs.ros.org/en/api/geometry msgs/html/msg/Twist.html) type message to express the velocity of a robot in free space, broken into its linear and angular parts, is a very useful feature of the Stageros Node.
+The subscription to the topic 'cmd_vel' from the 'geometry_msgs' package, which provides a ['Twist'](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html) type message to express the velocity of a robot in free space, broken into its linear and angular parts, is a very useful feature of the Stageros Node.
 
-The Stageros Node additionally uses the'sensor msgs' package's 'base scan' topic, which provides a ['LaserScan'](https://docs.ros.org/en/api/sensor msgs/html/msg/LaserScan.html) type message to represent a single scan from a planar laser range-finder.
+The Stageros Node additionally uses the'sensor_msgs' package's 'base scan' topic, which provides a ['LaserScan'](https://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html) type message to represent a single scan from a planar laser range-finder.
 
 
 Aside from that, I utilized a regular service from the'std srvs' package called 'reset_positions.'
 
-The'std srvs' package offers a sort of service called ['Empty'](https://docs.ros.org/en/api/std srvs/html/srv/Empty.html), which exchanges no actual data with the client but has proven to be highly beneficial for resetting the robot's location to its beginning point. 
+The'std srvs' package offers a sort of service called ['Empty'](https://docs.ros.org/en/api/std_srvs/html/srv/Empty.html), which exchanges no actual data with the client but has proven to be highly beneficial for resetting the robot's location to its beginning point. 
 
 Implementation choices
 --------------
@@ -82,6 +83,13 @@ Initially, there was implemented the code that allowed the robot to move autonom
 
 Afterwards it has implemented a user interface for taking input from the keyboard and modifying the speed of the robot in the circuit. Thanks to the service that establishes communication between all nodes, all the changes can be calculated.
 
+<p align="center">
+    
+<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png" width="700" height="350">
+    
+</p>
+
+In a few words, the user will provide an input to the user interface node that will either be valid ('+' ,'-', 'R/r','q') or a bad one, resulting in an error input on the console. This input will be processed by the server, which will release a float value that will be the increased speed value. The user interface will then send a specific message to the controller node, which will read the real increasing value. The controller node will then communicate updated velocity information to the stageros node. Another responsibility assigned to the server node is to invoke a service from the ROS library that resets the robot's position.
 
 Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200w.webp?cid=790b7611ycpbu1vkn0w4lha1xn131bjf2x8r6uj2bckcsqkk&rid=200w.webp&ct=s" width=50>
 --------------
@@ -113,8 +121,14 @@ Otherwise the robot travels straight, if the wall is further than the threshold,
 The UI node manages '/Velocity_message' based on the information he receives from the '/service' node.
 
 
-The controller node then publishes the data to the '/cmd vel' topic, which is used to control the robot's movement. 
+The controller node then publishes the data to the '/cmd_vel' topic, which is used to control the robot's movement. 
 
+Flowchart
+---------
+
+Here below can be found the main idea behind the controller node's way of implementation.
+
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Controller_Node.drawio.png)
 
 
 Server node
@@ -154,7 +168,18 @@ The service's structure is as follows:
 
 The former screen of the UI is shown as follows:
 
-![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.jpeg)))
+![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/user_interface_showing.png)
 
+Conclusions and possible future improvements
+--------------
 
-<img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=50>
+Overall, I was pleased with the job, especially since this was the first real project I'd attempted with ROS. I realized the tool's potential and what can be readily built with it.
+
+For example, the robot might be improved by adding the ability to follow the wall in order to avoid zigzagging in specific situations. Furthermore, though it is not needed in the assignment, the best ratio between linear and angular velocity throughout the corner could be used to avoid collisions when turning.
+
+Except for those enhancements, the robot has good behavior; the velocity cannot be increased too much, it can drive all the way around the circuit without problems and for many laps: for instance, with a speed of 7/8, the robot can drive all the way around the circuit without problems; with more velocity it may can sometimes collide the walls.
+
+<img src= "https://media3.giphy.com/media/y6PJrkD2AiME0B9sin/200w.webp?cid=790b7611ldy5v2egge0z6e7a5qtx6i6npclvmsf4paamg4l1&rid=200w.webp&ct=s" width=100 height=60>
+
+It might also be possible to modify the robot's speed dynamically, like real cars do: The robot can travel at a rate that is inversely proportional to the amount of straight time it has left. However, in this example, the user input will be rendered worthless.
+
