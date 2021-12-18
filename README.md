@@ -118,18 +118,17 @@ The UI node manages '/Velocity_message' based on the information he receives fro
 
 The controller node then publishes the data to the '/cmd_vel' topic, which is used to control the robot's movement. 
 
-Flowchart
----------
+## Flowchart
 
 Here below can be found the main idea behind the controller node's way of implementation.
 
 ![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Controller_Node.drawio.png)
 
 
-## Server node
+### Speed service
 
 
-The server node controls the robot's speed and collaborates closely with the user interface node, which is responsible for interacting with the final user.
+The service, runned by the controller node, controls the robot's speed and collaborates closely with the user interface node, which is responsible for interacting with the final user.
 It just verifies the character received by the UI node and adjusts the speed accordingly.
 When the button R is pressed, the server uses the '/reset positions' service to automatically reset the robot to its initial position and velocity. 
 
@@ -137,7 +136,7 @@ More specifically the server will accept the user interface node's client reques
 
 The different client requests are handled using a switch-case statement. The '+' allows for acceleration, the '-' for deceleration, 'q' to shutdown the UI node and publishers and subscribers to this node, and the 'R/r' for calling the 'reset_position' function from the 'std_srvs' package: this utility made resetting the robot to its initial position relatively simple.
 
-Important to notice is the ros shutdown() function which is used for killing all open subscriptions, publications, service calls, and service servers. By default roscpp also installs a SIGINT handler which will detect Ctrl-C and automatically shutdown for the user. It can be useful if we want to stop the server and the controller at the same time. 
+Important to notice is the ros shutdown() function which is used for killing all open subscriptions, publications, service calls, and service servers. By default roscpp also installs a SIGINT handler which will detect Ctrl-C and automatically shutdown for the user. It can be useful if we want to stop the server management and the controller communication with the user_interface immediately. 
 Then if we want to reload and restart the robot just re-run the commands in the terminal to start the closed nodes.
 
 
