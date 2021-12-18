@@ -112,8 +112,8 @@ The function implemented looks for the minimum value in each of the three sets a
     * alternatively, he slightly turns to the left.
 
 
-Otherwise the robot travels straight, if the wall is further than the threshold, and the '/Velocity message' value is used as the speed value.
-The UI node manages '/Velocity_message' based on the information he receives from the '/service' node.
+Otherwise the robot travels straight, if the wall is further than the threshold, and the '/Velocity_service' value is used as the updated speed value.
+The UI node manages '/Velocity_service' based on the information he receives from the '/service'.
 
 
 The controller node then publishes the data to the '/cmd_vel' topic, which is used to control the robot's movement. 
