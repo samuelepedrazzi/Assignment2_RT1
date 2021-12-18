@@ -80,7 +80,7 @@ Afterwards it has implemented a user interface for taking input from the keyboar
 
 <p align="center">
     
-<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_Nodes.drawio.png" width="600" height="350">
+<img src="https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Ros_nodes.drawio.png" width="600" height="350">
     
 </p>
 
