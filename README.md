@@ -6,7 +6,7 @@ Robot simulator using ROS
 
 Introduction <img src="https://cdn-icons.flaticon.com/png/128/938/premium/938446.png?token=exp=1639580920~hmac=6e5542379ff653021e57312c3f419fde" width=40>
 ------------
- 
+  
 The goal of the project is to create a robot that can 'drive autonomously' inside the [Autodromo Nazionale di Monza](https://www.monzanet.it/) while paying attention not to crash with the circuit limitations.
 
 In 'Assignment2_RT1' can be found several folders:
