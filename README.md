@@ -17,7 +17,7 @@ In 'Assignment2_RT1' can be found several folders:
 * 'src': folder containing three C++ files ('controller.cpp','server.cpp' and 'user_interface.cpp') that implement, respectively, three nodes: one that controls the robot movement along the circuit, one that corresponds to the actual server which receive the client request from the user_interface node and the last that interacts with the user.
 
 * 'srv': folder containing a custom ROS service ('ChangeVel.srv') with the goal of bringing the two previously stated nodes together.
-* 'msg': ROS uses a simplified messages description language for describing the data values that ROS nodes publish. The message used in this assignment is 'Velocity_message' which describes the speed value. /Velocity_message is managed by the user_interface node, according to what he receives from the /service node.
+
 * 'gitignore': file that specifies intentionally untracked files that Git should ignore, not showing because not relevant and necessary for the project.
 
 Installing and running <img src="https://media4.giphy.com/media/I8PIclm22mhMfJq0qx/200w.webp?cid=790b7611805i1n117mn1y069gy09vka0j0sq3gaamfdro6ln&rid=200w.webp&ct=s" width=80>
@@ -36,12 +36,7 @@ $ rosrun stage_ros stageros $(rospack find RT1_Assignment2)/world/my_world.world
 ```console
 $ rosrun Assingment2_RT1 controller
 ```
-(This command executes the controller node that is used for autonomous driving)
-
-```console
-$ rosrun Assingment2_RT1 server
-```
-(This particular command will run the service used to increase or decrease the speed)
+(This command executes the controller node that is used for autonomous driving and the service that is utilized to enhance or reduce the speed )
 
 ```console
 $ rosrun Assingment2_RT1 user_interface
@@ -131,8 +126,8 @@ Here below can be found the main idea behind the controller node's way of implem
 ![alt text](https://github.com/samuelepedrazzi/Assignment2_RT1/blob/main/images/Controller_Node.drawio.png)
 
 
-Server node
---------------
+## Server node
+
 
 The server node controls the robot's speed and collaborates closely with the user interface node, which is responsible for interacting with the final user.
 It just verifies the character received by the UI node and adjusts the speed accordingly.
