@@ -84,7 +84,7 @@ Afterwards it has implemented a user interface for taking input from the keyboar
     
 </p>
 
-In a few words, the user will provide an input to the user interface node that will either be valid ('+' ,'-', 'R/r','q') or a bad one, resulting in an error input on the console. This input will be processed by the server, which will release a float value that will be the increased speed value. The user interface will then send a specific message to the controller node, which will read the real increasing value. The controller node will then communicate updated velocity information to the stageros node. Another responsibility assigned to the server node is to invoke a service from the ROS library that resets the robot's position.
+In a few words, the user will provide an input to the user interface node that will either be valid ('+' ,'-', 'R/r','q') or a bad one, resulting in an error input on the console. This input will be processed by the service, which will release a float value that will be the increased speed value. The user interface will manage it and sends the updates to the controller node, which will read the real increasing value. The controller node will then communicate updated velocity information to the stageros node. Another responsibility assigned to the controller is to call service from the ROS library that resets the robot's position.
 
 Controller node  <img src="https://media4.giphy.com/media/AQ9ITNdrDb6XhZxDtd/200w.webp?cid=790b7611ycpbu1vkn0w4lha1xn131bjf2x8r6uj2bckcsqkk&rid=200w.webp&ct=s" width=50>
 --------------
